@@ -28,6 +28,8 @@
     "@storybook/react": "^6.0.16",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^9.1.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "prettier": "2.0.5",
     "react-is": "^16.13.1"
   },
@@ -45,6 +47,16 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,html,css}": [
+      "yarn format"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
