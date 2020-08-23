@@ -1,12 +1,12 @@
 import React from "react"
 import {
+  Card as SUCard,
   Grid as SUGrid,
   Image as SUImage,
-  Card as SUCard,
   Label as SULabel,
 } from "semantic-ui-react"
 
-type Props = {
+export type Props = {
   title: string
   eyecatch: string
   publishDate: string
@@ -14,7 +14,7 @@ type Props = {
   authorIcon: string
 }
 
-const BlogCard: React.FC<Props> = ({
+const PostCard: React.FC<Props> = ({
   title,
   eyecatch,
   publishDate,
@@ -46,4 +46,4 @@ const BlogCard: React.FC<Props> = ({
     </SUGrid.Column>
   )
 }
-export default BlogCard
+export default PostCard
