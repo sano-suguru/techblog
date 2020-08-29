@@ -1,42 +1,63 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import {
+  Button as SUButton,
+  Grid as SUGrid,
+  Header as SUHeader,
+  Icon as SUIcon,
+  Label as SULabel,
+} from "semantic-ui-react"
 
-const Header = ({ siteTitle }) => (
-  <header
+export type Props = {
+  siteTitle: string
+  background: string
+  repository: {
+    owner: string
+    name: string
+    url: string
+  }
+}
+
+const Header: React.FC<Props> = ({ siteTitle, background, repository }) => (
+  <SUHeader
+    as="header"
     style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
+      background: background,
     }}
   >
-    <div
+    <SUGrid
       style={{
         margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        maxWidth: `960px`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+      <SUGrid.Column width={5}>
+        <h1>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </h1>
+      </SUGrid.Column>
+      <SUGrid.Column floated="right" width={5}>
+        <a href={repository.url} target="_blank" rel="noopener">
+          <SUButton as="div" labelPosition="right">
+            <SUButton icon>
+              <SUIcon color="black" name="github" size="large" />
+            </SUButton>
+            <SULabel
+              basic
+            >{`${repository.owner} / ${repository.name}`}</SULabel>
+          </SUButton>
+        </a>
+      </SUGrid.Column>
+    </SUGrid>
+  </SUHeader>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

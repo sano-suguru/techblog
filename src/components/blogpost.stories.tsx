@@ -2,7 +2,7 @@ import "semantic-ui-css/semantic.min.css"
 
 import React from "react"
 
-import BlogPost, { Props } from "././blogpost"
+import BlogPost, { Props } from "./blogpost"
 
 export default {
   title: "Tech Blog/BlogPost",
