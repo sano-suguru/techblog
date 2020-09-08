@@ -14,7 +14,6 @@ export type Props = {
   repository: {
     owner: string
     name: string
-    url: string
   }
 }
 
@@ -45,7 +44,11 @@ const Header: React.FC<Props> = ({ siteTitle, background, repository }) => (
         </h1>
       </SUGrid.Column>
       <SUGrid.Column floated="right" width={5}>
-        <a href={repository.url} target="_blank" rel="noopener">
+        <a
+          href={`http://github.com/${repository.owner}/${repository.name}`}
+          target="_blank"
+          rel="noopener"
+        >
           <SUButton as="div" labelPosition="right">
             <SUButton icon>
               <SUIcon color="black" name="github" size="large" />
