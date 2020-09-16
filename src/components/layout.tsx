@@ -1,24 +1,25 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
 import "semantic-ui-css/semantic.min.css"
 
-const Layout = ({ children }) => {
+import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
+
+import { siteMetadata } from "../../gatsby-config"
+import Header from "./header"
+import Footer from "./footer"
+
+export type Props = {}
+
+const Layout = ({ children }: React.PropsWithChildren<Props>) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
           title
+          color
+          repository {
+            owner
+            name
+          }
         }
       }
     }
@@ -26,27 +27,33 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          minHeight: "100vh",
+          position: "relative",
+          paddingBottom: "120px",
+          boxSizing: "border-box",
         }}
       >
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          background={data.site.siteMetadata.color}
+          repository={{
+            owner: data.site.siteMetadata.repository.owner,
+            name: data.site.siteMetadata.repository.name,
+          }}
+        />
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer
+          background={data.site.siteMetadata.color}
+          repository={{
+            owner: data.site.siteMetadata.repository.owner,
+            name: data.site.siteMetadata.repository.name,
+          }}
+        />
       </div>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

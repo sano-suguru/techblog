@@ -13,6 +13,9 @@ const Footer: React.FC<Props> = ({ background, repository }) => (
   <footer
     style={{
       background: background,
+      width: "100%",
+      position: "absolute",
+      bottom: 0,
     }}
   >
     <SUGrid>
