@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
+    lang: "ja",
     title: `日々是開発`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `日々のプログラミングに関する学習と開発を記録するブログ`,
     author: `@gatsbyjs`,
     color: "linear-gradient(0.25turn, #ff8c00, #ffba55)",
     repository: {
