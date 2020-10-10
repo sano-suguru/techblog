@@ -16,3 +16,11 @@
   - Lighthouse で CI のたびにパフォーマンスを監視できる
 - テスト
   - Storybook でコンポーネントカタログを閲覧できる
+
+## `.env`ファイルのサンプル
+
+```env
+CONTENTFUL_SPACE_ID=xxxxxxxxxxxx
+CONTENTFUL_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CONTENTFUL_HOST=xxxxxxxxxxxxxxxxxxx
+```
